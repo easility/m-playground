@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+    
+    <RelativeLayout
+        android:id="@+id/digi_clock_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/digi_clock" >
+        
+        <TextView
+        	android:id="@+id/digi_time"
+        	style="@android:style/TextAppearance.Large"
+        	android:layout_width="match_parent"
+        	android:layout_height="100dp"
+        	android:textSize="75sp"
+        	android:gravity="center"/>
+        
+        <TextView
+        	android:id="@+id/digi_time_meredian"
+        	style="@android:style/TextAppearance.Large"
+        	android:layout_width="match_parent"
+        	android:layout_height="90dp"
+        	android:textSize="75sp"
+        	android:gravity="center"
+        	android:layout_below="@+id/digi_time"/>
+        
+        <LinearLayout 
+       		android:id="@+id/digi_date"
+        	android:layout_width="match_parent"
+        	android:layout_height="150dp"
+        	android:layout_alignParentBottom="true"
+        	android:orientation="vertical" >
+        	
+            <TextView
+        		android:id="@+id/digi_time_day"
+        		style="@android:style/TextAppearance.Medium"
+        		android:layout_width="match_parent"
+        		android:layout_height="80dp"
+        		android:gravity="center"
+        		android:textSize="48sp"
+        		android:textColor="@color/bluetext" />
+        	
+            <TextView
+        		android:id="@+id/digi_time_date"
+        		style="@android:style/TextAppearance.Medium"
+        		android:layout_width="match_parent"
+        		android:layout_height="match_parent"
+        		android:gravity="center"
+        		android:textSize="48sp"
+        		android:textColor="@color/bluetext" />
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+  
+
+</RelativeLayout>

